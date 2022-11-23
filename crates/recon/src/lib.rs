@@ -226,7 +226,6 @@ async fn get_resolvable_domains(
     let chunks = domains.into_iter().chunks(BATCH_SIZE);
     for chunk in &chunks {
         let futures = chunk
-            .into_iter()
             .filter(|str| parse_domain_name(str).is_ok())
             .map(|domain| {
                 resolver.lookup_ip(domain).then(|r| {

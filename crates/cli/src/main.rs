@@ -70,7 +70,7 @@ async fn main() -> Result<(), anyhow::Error> {
             .map(|resolver| DNSResolver::from_str(resolver))
             .collect()
     } else {
-        Ok(vec![])
+        Ok(Vec::new())
     };
 
     let dns_resolver = dns_input.map_err(|e| anyhow!(e))?;
